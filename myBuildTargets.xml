@@ -1,0 +1,25 @@
+<project name="myAntTragets" basedir=".">
+    <property name="tomcat" location="C:/development/infra/apache-tomcat-7.0.27"/>
+    <property name="codeBase" location="C:/development/projects/webScrapper"/>
+
+    <target name="update">
+        <exec dir="" executable="cmd" os="Windows 7">
+            <arg value="/c"/>
+            <arg value="mvn"/>
+            <arg value="package"/>
+        </exec>
+
+        <antcall target="$copyWebInf"/>
+        <antcall target="$reloadTomcatContext"/>
+    </target>
+
+    <target name="$copyWebInf">
+        <copy todir="${tomcat}/webapps/recommendationCrawler/WEB-INF">
+            <fileset dir="${codeBase}/target/recommendationCrawler/WEB-INF"/>
+        </copy>
+    </target>
+
+    <target name="$reloadTomcatContext">
+        <touch file="${tomcat}/webapps/recommendationCrawler/WEB-INF/web.xml"/>
+    </target>
+</project>
