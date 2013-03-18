@@ -7,8 +7,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <link href="../../resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../resources/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="../../BasicCrawler/resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../BasicCrawler/resources/css/bootstrap-responsive.min.css" rel="stylesheet">
 
 </head>
 <body>
