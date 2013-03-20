@@ -19,11 +19,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-//import java.io.FileWriter;
-
 /**
  * @author Chaim Arbiv
  * @version $id$
+ *
+ * creates a file with the values from the scrap in a CSV format and emails it at the end
  */
 
 public class CsvMailExporter implements Exporter {
@@ -61,6 +61,10 @@ public class CsvMailExporter implements Exporter {
         rowOfValues = new ArrayList<String>();
     }
 
+    /**
+     * once scrapping is done this creates a mime message and sends it to the recipient
+     * @link Exporter
+     */
     @Override
     public void close() {
         try {
@@ -77,11 +81,11 @@ public class CsvMailExporter implements Exporter {
 
             statusService.setStatus("Done. Email was sent");
         } catch (MessagingException e) {
-            log.error("MessagingException: " + e);
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            log.error("could not create mail object " + e);
+            throw new IllegalStateException("could not create mail object ", e);
         } catch (IOException e) {
             log.error("IOException: " + e);
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            throw new IllegalStateException("could not create mail object ", e);
         }
     }
 

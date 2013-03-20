@@ -42,13 +42,19 @@ public class CrawlerController {
     private StatusService statusService;
 
 
-    // Sends the UI to the client
+    /**
+     * Redirects the browser to the ui.
+     * using @link org.springframework.web.servlet.view.InternalResourceViewResolver in the spring-servlet.xml
+     */
     @RequestMapping(value = "/start", method = RequestMethod.GET)
     public String initUi() {
         return "webCrawler";
     }
 
-    // Sends the state of the app in the response
+    /**
+     * entry point to tap the status service
+     * @return the status to the client.
+     */
     @RequestMapping(value = "/status", method = RequestMethod.GET)
     @ResponseBody
     public String getStatus() {
@@ -56,11 +62,16 @@ public class CrawlerController {
     }
 
 
-    // Login service.
-    // NOTE: This is just a place holder and meant to demonstrate usage of the status codes.
-    // DO NOT USE THIS IN A REAL APP!. You need to encrypt the user name (optional) and the password (must)
-    // before sending it to the server (Unless you know you are using ssl) and store it with salt on the DB.
-    // You can find how Spring can help you with that here {@link http://static.springsource.org/spring-security/site/}
+    /**
+     * Login service.
+     * NOTE: This is just a place holder and meant to demonstrate usage of the status codes.
+     * DO NOT USE THIS IN A REAL APP!. You need to encrypt the user name (optional) and the password (must)
+     * before sending it to the server (Unless you know you are using ssl) and store it with salt on the DB.
+     * You can find how Spring can help you with that here {@link http://static.springsource.org/spring-security/site/}
+     * @param userName user name sent as a parameter
+     * @param password password sent as a parameter (not encrypted)
+     * @param response is added by the framework and is meant to set the http status
+     */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public void index(@RequestParam("userName") String userName, @RequestParam("password") String password, HttpServletResponse response) {
         if (userName.equals(password))
@@ -69,7 +80,11 @@ public class CrawlerController {
             response.setStatus(HttpStatus.UNAUTHORIZED.value());
     }
 
-    // initiates the scrapping process
+    /**
+     * starts the the process of crawling and scrapping
+     * @param id the crawling properties name.
+     * @param response provided by the framework and meant to set the http status
+     */
     @RequestMapping(value = "/start/{id}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     public void scrap(@PathVariable String id, HttpServletResponse response) {
@@ -87,7 +102,10 @@ public class CrawlerController {
     }
 
 
-    // adds my crawler properties
+    /**
+     * a convenience function to fill up the database with sample data
+     * @param response provided by the framework and meant to set the http status
+     */
     @RequestMapping(value = "/addScraper", method = RequestMethod.GET)
     public void addScrapingParameters(HttpServletResponse response) {
         try {

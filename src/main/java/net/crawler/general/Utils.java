@@ -11,8 +11,7 @@ import java.util.Map;
  */
 public class Utils{
 
-    // to hang different exporters to use along the process. So each crawling properties contains only the name of the
-    // exporter
+    // Used to hang different exporters to use along the process. This allows properties to contain only the exporter id
     private Map<String, Exporter> exporterMap;
 
     public Map<String, Exporter> getExporterMap() {

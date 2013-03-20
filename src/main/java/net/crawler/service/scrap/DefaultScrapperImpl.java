@@ -29,14 +29,22 @@ import java.util.Iterator;
 /**
  * @author Chaim Arbiv
  * @version $id$
+ *
+ * Does the scrapping work
  */
 
 public class DefaultScrapperImpl implements Scrapper {
     private final Log log = LogFactory.getLog(getClass());
 
+    /**
+     * @see net.crawler.general.PendingPages
+     */
     @Autowired
     PendingPages pendingPages;
 
+    /**
+     * @see net.crawler.general.Utils
+     */
     @Autowired
     Utils utils;
 

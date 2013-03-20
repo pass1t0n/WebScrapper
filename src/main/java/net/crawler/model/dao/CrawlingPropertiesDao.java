@@ -10,7 +10,8 @@ import java.util.List;
 /**
  * @author Chaim Arbiv
  * @version $id$
- * Properties bag for fetching different pages
+ *
+ * Used to hold the information to fetch the pages and add them to the pending pages
  */
 
 @Entity

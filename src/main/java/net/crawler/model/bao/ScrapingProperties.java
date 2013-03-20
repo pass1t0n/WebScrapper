@@ -9,6 +9,7 @@ import java.util.Map;
  * @author Chaim Arbiv
  * @version $id$
  * This a bao class to wrap ScrapingPropertiesDoa and give more logic like iterator and exporter handling
+ * @see net.crawler.model.dao.ScrapingPropertiesDao
  */
 public class ScrapingProperties {
     private ScrapingPropertiesDao  scrapingPropertiesDao;
@@ -37,10 +38,6 @@ public class ScrapingProperties {
         this.getScrapingPropertiesDao().setExporterId(exporterId);
     }
 
-//    public Exporter getExporter() {
-//        return getUtils().getExporterMap().get(getExporterId());
-//    }
-
     public Map<String, XpathTemplate> getXpathTemplates() {
         return getScrapingPropertiesDao().getXpathTemplates();
     }
@@ -52,20 +49,4 @@ public class ScrapingProperties {
     public void setXpathTemplates(Map<String, XpathTemplate> xpathTemplates) {
         this.getScrapingPropertiesDao().setXpathTemplates(xpathTemplates);
     }
-
-//    public Utils getUtils() {
-//        return utils;
-//    }
-//
-//    public void setUtils(Utils utils) {
-////        this.utils = utils;
-//    }
-
-    //    public CrawlingPropertiesDao getCrawlingProperties() {
-//        return getScrapingPropertiesDao().crawlingProperties;
-//    }
-//
-//    public void setCrawlingProperties(CrawlingPropertiesDao crawlingProperties) {
-//        this.getScrapingPropertiesDao().crawlingProperties = crawlingProperties;
-//    }
 }

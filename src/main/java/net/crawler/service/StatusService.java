@@ -6,7 +6,8 @@ import org.springframework.web.context.WebApplicationContext;
 /**
  * @author Chaim Arbiv
  * @version $id$
- * To be able to return a status to the client
+ *
+ * Used to send the status to the client. The class is in the scope of the request
  */
 
 @Scope(value = WebApplicationContext.SCOPE_REQUEST)

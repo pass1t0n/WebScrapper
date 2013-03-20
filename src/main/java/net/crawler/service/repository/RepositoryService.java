@@ -5,11 +5,21 @@ import net.crawler.model.bao.CrawlingProperties;
 /**
  * @author Chaim Arbiv
  * @version $id$
- *          TODO: write a description for this class
+ * Defines an interface for implementations of an class that provides all the repository services
  */
 public interface RepositoryService {
 
+    /**
+     * retrieves the CrawlingProperties from the storage
+     * @param domain the crawling properties name
+     * @return CrawlingProperties
+     * @see CrawlingProperties
+     */
     public CrawlingProperties getCrawlingProperties(String domain);
 
-    public void putCrawlingProperties(CrawlingProperties sp);
+    /**
+     *
+     * @param cp the crawling properties name
+     */
+    public void putCrawlingProperties(CrawlingProperties cp);
 }

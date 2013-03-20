@@ -11,8 +11,7 @@ import java.util.List;
  * @version $id$
  * Holds the pages that have been already visited.
  *
- * I have created this class as oppose to using a List since I can inject it to any other classes that i need it.
- * Springs default injection method is Singleton which works well for me in this case.
+ * This class was created so I can take advatage of Spring injection/wiring abilities.
  */
 
 @Component
@@ -26,5 +25,4 @@ public class PendingPages {
     public List<Document> getPages(){
         return pages;
     }
-
 }

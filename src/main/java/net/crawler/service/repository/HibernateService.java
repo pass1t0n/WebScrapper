@@ -20,7 +20,7 @@ import java.util.List;
  * @author Chaim Arbiv
  * @version $id$
  * Provides all the hibernate repository services.
- * Note: I changed the code from working with HibernateTemplate is not recommended since Spring 3
+ * Note: I changed the code from working with HibernateTemplate since is not recommended since Spring 3
  */
 @Repository
 public class HibernateService implements InitializingBean, RepositoryService {
@@ -31,6 +31,13 @@ public class HibernateService implements InitializingBean, RepositoryService {
     @Autowired
     private SessionFactory sessionFactory;
 
+    /**
+     * Note that the CrawlingPropertiesDao is lazy loaded
+     * @param propertiesId the crawling properties name
+     * @return CrawlingProperties which is a CrawlingPropertiesDao with a CrawlingProperties around it.
+     *
+     * Note: that the CrawlingPropertiesDao is lazy loaded for that we are using the OpenSessionInView pattern
+     */
     @Override
     @SuppressWarnings("all")
     public CrawlingProperties getCrawlingProperties(String propertiesId) {
@@ -53,11 +60,15 @@ public class HibernateService implements InitializingBean, RepositoryService {
         return cp;
     }
 
+    /**
+     * adds the crawling properties in the database
+     * @param cp the crawling properties name
+     */
     @Override
     @Transactional(readOnly = false)
-    public void putCrawlingProperties(CrawlingProperties crawlingProperties) {
-        this.getSessionFactory().getCurrentSession().saveOrUpdate(crawlingProperties.getCrawlingPropertiesDao());
-        log.trace(crawlingProperties.getName() + " was successfully stored in the DB");
+    public void putCrawlingProperties(CrawlingProperties cp) {
+        this.getSessionFactory().getCurrentSession().saveOrUpdate(cp.getCrawlingPropertiesDao());
+        log.trace(cp.getName() + " was successfully stored in the DB");
     }
 
     public SessionFactory getSessionFactory() {

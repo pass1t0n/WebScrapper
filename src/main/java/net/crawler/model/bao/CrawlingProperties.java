@@ -9,7 +9,11 @@ import java.util.List;
 /**
  * @author Chaim Arbiv
  * @version $id$
- * * This a bao class to wrap CrawlingPropertiesDoa and give more logic like iterator and exporter handling
+ * /
+ 
+/**
+ * This a bao class to wrap CrawlingPropertiesDoa and give some more logic like iterator and exporter handling
+ * @see net.crawler.model.dao.CrawlingPropertiesDao
  */
 public class CrawlingProperties implements Iterable<ScrapingProperties>{
 
@@ -82,14 +86,9 @@ public class CrawlingProperties implements Iterable<ScrapingProperties>{
         return new ScrapingIterator();
     }
 
-//    public Utils getUtils() {
-//        return utils;
-//    }
-//
-//    public void setUtils(Utils utils) {
-//        this.utils = utils;
-//    }
-
+    /**
+     * iterates over the scrapping properties
+     */
     class ScrapingIterator implements Iterator<ScrapingProperties>{
 
         Iterator<ScrapingPropertiesDao> iter;

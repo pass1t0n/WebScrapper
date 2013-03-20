@@ -10,6 +10,8 @@ import java.util.Map;
  * @author Chaim Arbiv
  * @version $id$
  *
+ * Used to hold all the information to scrap pages from the pendingPages
+ * @see net.crawler.general.PendingPages
  */
 
 @Entity
